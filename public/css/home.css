@@ -119,8 +119,8 @@
 }
 
 .anon-button:hover {
-    background-color: #8929b9; /* Darker purple on hover */
-    box-shadow: 0 0 0 6px rgba(169, 52, 219, 0.7); /* Darker shadow on hover */
+    background-color: #7820a4; /* Darker purple on hover */
+    box-shadow: 0 0 0 6px rgba(180, 52, 219, 0.7); /* Darker shadow on hover */
 }
 
 /* Image Section */

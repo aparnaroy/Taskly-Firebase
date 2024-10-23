@@ -11,6 +11,15 @@ body.dark-mode .start-button:hover {
     box-shadow: 0 0 0 6px rgba(65, 175, 249, 0.7); /* Darker shadow on hover */
 }
 
+body.dark-mode .anon-button:hover {
+    background-color: #b14ce4; /* Lighter purple on hover */
+    box-shadow: 0 0 0 6px rgba(183, 52, 219, 0.7); /* Darker shadow on hover */
+}
+
+body.dark-mode .anon-button {
+    background-color: #9734c9;
+} 
+
 body.dark-mode #screenshot {
     box-shadow: 0 20px 30px rgba(255, 255, 255, 0.4);
 }
