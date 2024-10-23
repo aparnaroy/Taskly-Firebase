@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Taskly</title>
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon"/>
+    <link href="./css/home.css" rel="stylesheet" type="text/css" />
+    <link href="./css/home-dark.css" rel="stylesheet" type="text/css" />
+    <link href="./css/main-page.css" rel="stylesheet" type="text/css" />
+    <link href="./css/main-page-dark.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+    </script>
+    
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/10.13.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/10.13.2/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.13.2/firebase-database-compat.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Top Navbar -->
+        <img src="./img/logo.png" alt="Taskly" class="logo" style="margin-left: -10px;" />
+        <div class="top-nav">
+            <div class="right-top-navbar">
+                <img src="./img/lightdark-icon-black.png" class="mode-icon" id="lightdarkIcon">
+                <!-- Log In Button -->
+                <button id="loginButton" class="loginButton">Log In</button>
+            </div>
+        </div>
+        
+        <div class="content">
+          <div class="text-section">
+              <h1 class="big-text">Write it. Do it. Done. We make it easy.</h1>
+              <h4 class="small-text">Your productivity starts here. Say goodbye to messy scribbles and relying on memory to remember all your tasks. Get things done with the #1 to-do app.</p>
+              <button id="loginButton2" class="start-button">Get Started Now</button>
+              <button id="anonButton" class="anon-button">Try It First</button>
+          </div>
+          <div class="image-section">
+              <img src="./img/screenshot.png" alt="Screenshot" id="screenshot">
+          </div>
+        </div>
+
+
+        <img src="./img/down-arrow.png" alt="down-arrow" class="scroll-arrow">
+
+
+        <!-- Info section -->
+        <div class="info-section">
+            <div class="info-box">
+                <div class="info-text">
+                    <h3 class="first-h3">Create multiple checklists for all your productivity needs</h3>
+                    <p>Organize your tasks in separate checklists to stay focused.</p>
+                </div>
+                <img src="./img/lists-screenshot.png" style="width: 220px;" alt="Checklists" class="info-image" id="lists-screenshot">
+            </div>
+
+            <div class="info-box second-box">
+                <div class="info-text">
+                    <h3 class="second-h3">Add customizable tags to your tasks to stay organized</h3>
+                    <p>Personalize your tasks with tags to keep everything in order.</p>
+                </div>
+                <img src="./img/tags-screenshot.png" style="width: 220px;" alt="Tags" class="info-image" id="tags-screenshot">
+            </div>
+
+            <div class="info-box">
+                <div class="info-text">
+                    <h3 class="third-h3">Celebrate each one of your accomplishments!</h3>
+                    <p>Check off tasks and celebrate your progress along the way.</p>
+                </div>
+                <img src="./img/confetti-screenshot.png" style="width: 550px" alt="Celebrate" class="info-image" id="confetti-screenshot">
+            </div>
+        </div>
+
+        <span class="created-by">Created by <span class="my-name">Aparna Roy</span></span>
+    </div>
+
+    <script type="module" src="./js/firebase-auth.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+</html>

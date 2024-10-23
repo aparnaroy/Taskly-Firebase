@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Taskly</title>
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon"/>
+    <link href="./css/start-up.css" rel="stylesheet" type="text/css" />
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/10.13.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/10.13.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.13.2/firebase-database-compat.js"></script>
+    <!-- <script defer src="/__/firebase/10.13.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.13.2/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.13.2/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/10.13.2/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/10.13.2/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/10.13.2/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/10.13.2/firebase-performance-compat.js"></script> -->
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+
+<body>
+  <div class="container">
+      <div class="load-in-container">
+          <img src="./img/white-taskly.png" alt="Taskly" class="title">
+          <div class="line"></div>
+          <p class="subtitle">Write it. Do it. Done.</p>
+      </div>
+
+      <div class="logo-container"></div>
+  </div>
+
+  <script>
+      // Show main page after animations are done
+      setTimeout(() => {
+          window.location.href = "./main-page.html";
+      }, 7200);
+  </script>
+</body>
+</html>

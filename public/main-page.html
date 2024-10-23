@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Taskly</title>
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon"/>
+    <link href="./css/main-page.css" rel="stylesheet" type="text/css" />
+    <link href="./css/main-page-dark.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+    </script>
+    
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/10.13.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/10.13.2/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.13.2/firebase-database-compat.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Top Navbar -->
+        <div class="left-top-navbar" style="padding: 10px;"></div>
+        <img src="./img/sidebar-icon-black.png" class="menu-icon" id="sidebarIcon">
+        <img src="./img/logo.png" alt="Taskly" class="logo"/>
+        
+        <div class="top-nav">
+            <div class="right-top-navbar">
+                <img src="./img/lightdark-icon-black.png" class="mode-icon" id="lightdarkIcon">
+                <span class="username"></span> 
+                <div class="user-circle"></div>
+
+                <!-- Dropdown Menu -->
+                <div class="user-dropdown" id="userDropdown">
+                    <p class="user-email"></p> <!-- User email will be displayed here -->
+                    <button class="logout-button">Log Out</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Navbar -->
+        <div id="side-nav" class="side-nav">
+            <div id="lists">
+                <h2>
+                    My Lists
+                    <img src="./img/add.png" class="add-list" alt="Add"/>
+                </h2>
+                <div id="list-items">
+                    <!-- <div class="list-item">
+                        <a href="#" class="list-link">List 1</a>
+                    </div>
+                    <div class="list-item">
+                        <a href="#" class="list-link">List 2</a>
+                    </div>
+                    <div class="list-item">
+                        <a href="#" class="list-link">List 3</a>
+                    </div> -->
+                </div>
+            </div>
+            <div id="tags">
+                <h2>
+                    Tags
+                    <img src="./img/add.png" class="add-tag" alt="Add"/>
+                </h2>
+                <div id="tag-items">
+                    <!-- <div class="tag-item">
+                        <a href="#" class="tag-name">Work</a>
+                        <input type="color" class="color-picker" value="#0279c9">
+                    </div>
+                    <div class="tag-item">
+                        <a href="#" class="tag-name">Personal</a>
+                        <input type="color" class="color-picker" value="#910ea1">
+                    </div>
+                    <div class="tag-item">
+                        <a href="#" class="tag-name">School</a>
+                        <input type="color" class="color-picker" value="#11a2bf">
+                    </div>
+                    <div class="tag-item">
+                        <a href="#" class="tag-name">Urgent</a>
+                        <input type="color" class="color-picker" value="#bf1111">
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Context Menu Shown on Right Click -->
+        <ul id="context-menu" class="context-menu">
+            <li id="delete-option">Delete</li>
+        </ul>
+
+
+        <div class="main-content">
+            <div id="no-lists-message">
+                <h2>You have no lists.</h2>
+            </div>
+
+            <div id="list-title" contenteditable="true" class="list-title"><!--List 1--></div> 
+            <div class="box">
+                <div id="no-tasks-message">
+                    You have no tasks.
+                </div>
+                <ul id="taskList">
+                    <!-- <li>
+                        <div class="circle"></div>
+                        <div class="task-input task-text" contenteditable="true">Task 1</div>
+                        <img src="./img/tag.png" class="tag-button" />
+                        <div class="tag-dropdown"></div>
+                        <img src="./img/delete.png" class="delete-button" alt="Delete"/>
+                    </li> -->
+                </ul>
+                <form id="input-container">
+                    <input type="text" id="newTaskInput" placeholder="Add a New Task" />
+                    <button id="addButton">+</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/firebase-auth.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

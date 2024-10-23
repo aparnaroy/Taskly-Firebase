@@ -1,0 +1,757 @@
+/************************* Main Page *************************/
+
+body {
+    margin: 0;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Centered container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Top Navbar */
+.top-nav {
+    position: fixed; /* Fixed position to stay at the top */
+    top: 0; /* Align to the top of the viewport */
+    left: 0; /* Align to the left */
+    right: 0; /* Extend to the right */
+    height: 80px;
+    background-color: transparent; /* Start with a transparent background */
+    box-shadow: none; /* No shadow initially */
+    z-index: 1; /* Ensure it appears above other elements */
+    display: flex; /* Flexbox for layout */
+    align-items: center; /* Center items vertically */
+    padding: 0px 20px; /* Horizontal padding */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* When scrolled down */
+.top-nav.scrolled {
+    background-color: white; /* White background on scroll */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Adjust the logo inside the navbar */
+.logo {
+    position: fixed;
+    top: 15px;
+    left: 70px;
+    width: 150px;
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 30;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+/* Sidebar Icon */
+.menu-icon {
+    position: fixed;
+    top: 28px;
+    left: 15px;
+    width: 28px;
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 30;
+    transition: filter 0.3s; /* Smooth transition for color change */
+}
+
+.mode-icon {
+    /* position: absolute; */
+    /* top: 18px;
+    right: 285px; */
+    width: 38px;
+    height: auto;
+    cursor: pointer;
+    z-index: 2;
+} 
+
+.left-top-navbar {
+    position: fixed;
+    left: -250px;
+    width: 230px;
+    height: 61px;
+    background-color: #111;;
+    transition: transform 0.5s ease; /* Add transform transition */
+    z-index: 3;
+}
+
+.left-top-navbar.open {
+    transform: translateX(250px); /* Move to the right when the sidebar opens */
+}
+
+.right-top-navbar {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    margin-left: auto; /* Push to the right end */
+    padding: 20px 10px; /* Optional: Add some padding for spacing */
+}
+
+.username {
+    font-size: 18px; /* Font size for the user's name */
+    color: #333; /* Change color as needed */
+    margin-left: 30px; /* Space between mode-icon and name */
+}
+
+.user-circle {
+    width: 40px;
+    height: 40px; 
+    border-radius: 50%; /* Make it circular */
+    /* background-color: #3498db; */
+    color: white; /* Text color */
+    display: flex;
+    align-items: center; /* Center align text vertically */
+    justify-content: center; /* Center align text horizontally */
+    font-size: 19px; /* Font size for the letter */
+    margin-left: 20px; /* Space between circle and name */
+    transition: filter 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.user-circle:hover {    
+    filter: brightness(1.3);
+    cursor: pointer;
+}
+
+/* Style for the user dropdown */
+.user-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 80px; 
+    right: 30px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 220px;
+}
+
+.user-dropdown p {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 17px;
+    color: #111;
+}
+
+.user-email {
+    text-align: center;
+}
+
+.logout-button {
+    background-color: #7a11dc; 
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #54099a; /* Darker on hover */
+}
+
+
+  
+/* Side Navigation Bar */
+.side-nav {
+    height: 100%; /* Full height */
+    width: 250px; /* Fixed width for the sidebar */
+    position: fixed; /* Stay in place */
+    top: 0;
+    left: -250px; /* Start hidden to the left */
+    background-color: #111; /* Black background */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    transition: transform 0.5s ease; /* Smooth transition for the sidebar */
+    padding-top: 80px; /* Start a little below the top */
+    z-index: 2;
+}
+
+.side-nav.open {
+    transform: translateX(250px); /* Move into view */
+}
+
+/* Sidebar Titles */  
+.side-nav h2 {
+    color: white;
+    margin-left: 20px;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Sidebar Content */
+.side-nav a {
+    padding: 11px 35px;
+    max-width: fit-content;
+    text-decoration: none;
+    font-size: 20px;
+    color: #a3a1a1;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover {
+    color: #f1f1f1;
+}
+
+#tags .tag-item:last-child {
+    margin-bottom: 170px;
+}
+
+.selected-list {
+    background-color: #272727;
+}
+
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(219, 6, 6);
+    color: white;
+    border-radius: 3px;
+    list-style-type: none;
+    padding: 7px;
+    margin: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.context-menu li {
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+.context-menu:hover {
+    background-color: rgb(174, 0, 0);
+}
+
+
+/******************* Main Contents ********************/
+
+/* Styles for smaller screens smaller */
+@media (max-width: 1068px) {
+    .box {
+        padding-top: 5px !important;
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+        width: calc(100% - 200px) !important;
+    }
+
+    #input-container {
+        width: calc(100% - 60px) !important;
+    }
+    
+    .side-nav {
+        width: 250px; /* Sidebar takes full width on small screens */
+    }
+
+    .side-nav.open {
+        transform: translateX(100%); /* Overlay the sidebar over the main content */
+    }
+
+    /* Ensure main content stays centered and aligned properly */
+    .main-content.left-align {
+        align-items: center; /* Reset to center alignment */
+    }
+}
+
+@media (max-width: 668px) {
+    .tag-rectangle {
+        font-size: 0 !important;
+    }
+
+    .box {
+        padding-top: 0 !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        width: calc(100% - 110px) !important;
+    }
+
+    #input-container {
+        width: calc(100% - 40px) !important;
+    }
+}
+
+/* Reset sidebar and alignment for even smaller screens (mobile) */
+@media (max-width: 480px) {
+    .side-nav {
+        width: 250px; /* Full width on smaller screens */
+    }
+
+    .side-nav.open {
+        transform: translateX(100%); /* Overlay the sidebar over content */
+    }
+
+    /* Reset alignment for smaller screens */
+    .main-content.left-align {
+        align-items: center; /* Reset to centered alignment */
+    }
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content by default */
+    width: 100%;
+    padding: 20px;
+    margin-top: 40px;
+    transition: align-items 0.5s ease; /* Smooth transition for alignment */
+}
+
+.main-content.left-align {
+    align-items: flex-start; /* Left align when sidebar is open */
+}
+
+/* Center the title by default */
+#list-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    text-align: center; /* Center the text */
+    width: 63vw; /* Match the width of the box */
+    border: none; /* No border */
+    outline: none; /* No outline on focus */
+    transition: text-align 0.5s ease, margin-left 0.5s ease; /* Smooth transition */
+}
+
+#list-title:focus {
+    border-bottom: 1px solid #111; /* Optional: underline on focus */
+}
+
+/* Center the box by default */
+.box {
+    width: calc(100% - 595px);
+    min-width: 300px;
+    min-height: 400px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin-bottom: 90px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 30px 40px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: margin-left 0.5s ease; /* Smooth transition */
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 40px;
+    background: linear-gradient(to right, #0279c9, #372991, #372991, #8e02ac);
+    z-index: -1;
+}
+
+/* Left-align title when the sidebar is open */
+.main-content.left-align #list-title  {
+    text-align: left; /* Left-align the text */
+    margin-left: calc(250px + 85px); /* Align title with the box */
+}
+
+/* Left-align the box when the sidebar is open */
+.main-content.left-align .box {
+    margin-left: calc(250px + 85px); /* Left-align the box with the side nav bar */
+}
+
+
+#input-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 30px;
+    width: calc(100% - 140px);
+}
+
+#newTaskInput {
+    /* width: 63vw; */
+    width: calc(100% - 140px);
+    padding: 22px;
+    border: 1.5px solid #979797;
+    outline: none;
+    background: #e7e7e7;
+    font-size: 17px;
+    border-radius: 25px;
+    margin-right: 10px; /* Space between input and button */
+}
+
+#addButton {
+    padding: 14px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border: none;
+    border-radius: 20px !important;
+    background: linear-gradient(to bottom right, #0279c9, #372991, #8e02ac);;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 33px;
+    transition: filter 0.2s ease; /* Smooth transition for hover effect */
+}
+
+#addButton:hover {
+    filter: brightness(1.3); /* Lighter shade on hover */
+}
+
+#taskList {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+#taskList li {
+    display: flex;
+    align-items: center; /* Center circle and text vertically */
+    padding: 21px 10px; /* Vertical padding for each item */
+    border-bottom: 1px solid #ccc; /* Thin horizontal line */
+    font-size: 18px;
+    position: relative; /* For positioning if needed */
+    justify-content: space-between;
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+#taskList li:hover {
+    background-color: rgb(237, 237, 237);
+    cursor: grab;
+}
+
+#taskList li:last-child {
+    border-bottom: none; /* Remove the bottom border from the last list item */
+    margin-bottom: 105px; /* Leave space for input box */
+}
+
+.circle {
+    width: 21px;
+    height: 21px;
+    border-radius: 50%; /* Make it circular */
+    margin-right: 18px; /* Space between circle and text */
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(to bottom right, #0279c9, #8e02ac); /* Gradient fill */
+    transition: filter 0.3s ease;
+}
+
+.circle::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    width: 17.5px; /* Inner circle width */
+    height: 17.5px; /* Inner circle height */
+    border-radius: 50%; /* Keep it circular */
+    background: white;
+    transform: translate(-50%, -50%);
+    transition: background 0.2s ease;
+}
+
+.circle:hover {
+    filter: brightness(1.3); /* Lighter shade on hover */
+}
+
+/* Completed state for circle and list item */
+.completed .circle::before {
+    background: transparent; /* Remove the inner circle fill */
+}
+
+/* Completed list item text */
+.completed {
+    color: #a3a1a1; /* Gray out the text */
+    position: relative;
+    padding-left: 30px; /* Space for the circle */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Strike-through effect, only under the text */
+.completed .task-text {
+    position: relative;
+    color: #a3a1a1;     /* Gray out the text */
+}
+
+.task-text {
+    position: relative;
+    padding-left: 0px;
+    transition: color 0.3s ease;
+}
+
+
+.delete-button {
+    padding: 6px;
+    margin-left: 10px; /* Push the delete button to the right */
+    width: 15px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.delete-button:hover {
+    border-radius: 30%;
+    background-color: rgba(255, 0, 0, 0.865);
+}
+
+.tag-button {
+    padding: 6px;
+    width: 15px;
+    height: auto; /* Maintain aspect ratio */
+    margin-left: auto; /* Push the button to the right */
+    cursor: pointer; /* Change cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.tag-button:hover {
+    border-radius: 30%;
+    background-color: rgba(255, 174, 0, 0.865);
+}
+
+.tag-dropdown {
+    position: absolute;
+    margin-left: auto;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    min-width: 150px;
+    z-index: 10;
+    display: none; /* Hidden by default */
+}
+
+.tag-dropdown a {
+    padding: 12px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tag-dropdown a:hover {
+    background-color: #eee;
+}
+
+.tag-dropdown.visible {
+    display: block; /* Show when the dropdown is active */
+}
+
+.tag-container {
+    margin-top: 5px; /* Space between task text and tags */
+}
+
+.tag-rectangle {
+    display: inline-block;
+    margin-left: auto;
+    padding: 5px 10px;
+    margin-right: 15px;
+    border-radius: 5px; /* Rounded corners */
+    color: rgb(255, 255, 255); /* Text color */
+    font-size: 14px; /* Font size */
+}
+
+.tag-rectangle:hover {
+    filter: brightness(1.2); /* Lighter shade on hover */
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+}
+
+.tag-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items to the ends */
+    box-sizing: border-box; 
+    transition: background-color 0.5s ease; /* Smooth transition for hover effect */
+}
+
+.tag-item:hover {
+    background-color: #272727;
+    /* cursor: grab; */
+}
+
+.active-tag .tag-name {
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.tag-name {
+    flex-grow: 1; /* Allow the text to take up available space */
+    word-break: break-all;
+    margin-right: -20px; /* Space between the tag name and the color picker */
+    text-decoration: none; /* Remove underline */
+    color: #a3a1a1;
+    transition: 0.3s;
+}
+
+.color-picker {
+    flex-shrink: 0; /* Prevent the color picker from shrinking */
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin-right: 26px;
+    border-radius: 20%;
+}
+
+
+.list-item {
+    transition: background-color 0.5s ease; /* Smooth transition for hover effect */
+}
+
+.list-item:hover {
+    background-color: #272727;
+    /* cursor: grab; */
+}
+
+
+.add-list {
+    width: 16px;
+    height: auto;
+    cursor: pointer;
+    margin-left: 80px; /* Push it to the right */
+    display: inline-block; /* Ensure it behaves like a block for proper spacing */
+    filter: invert(1);
+    transition: all 0.25s ease; /* Smooth transition for hover effect */
+}
+
+.add-list:hover {
+    scale: 1.3; /* Slightly darker on hover */
+    transform: rotate(180deg);
+}
+
+.add-tag {
+    width: 16px;
+    height: auto;
+    cursor: pointer;
+    margin-left: 122px; /* Push it to the right */
+    display: inline-block; /* Ensure it behaves like a block for proper spacing */
+    filter: invert(1);
+    transition: all 0.25s ease; /* Smooth transition for hover effect */
+}
+
+.add-tag:hover {
+    scale: 1.3; /* Slightly darker on hover */
+    transform: rotate(180deg);
+}
+
+.task-input {
+    border: none; /* No border */
+    background: transparent; /* Transparent background */
+    font-size: 18px; /* Match font size */
+    flex-grow: 1; /* Take available space */
+    margin-left: 10px; /* Space between circle and input */
+    margin-right: 20px;
+    outline: none; /* No outline on focus */
+    width: 0px;
+}
+
+.task-input:focus {
+    border-bottom: 1px solid #0279c9; /* Optional: underline on focus */
+}
+
+/* Strike-through effect for completed input tasks */
+.completed .task-input {
+    text-decoration: line-through; /* Apply the strike-through effect */
+    color: #a3a1a1; /* Gray out the text */
+}
+
+.task-input:hover {
+    cursor: text;
+}
+
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(120vh); /* End point */
+        opacity: .2;
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #FF5733; /* Change to desired colors */
+    opacity: 1;
+    pointer-events: none;
+    z-index: 9999; /* Ensure it appears above other elements */
+    animation: fall 1s cubic-bezier(.4, 0, .8, 1) forwards; /* Smooth acceleration */
+    /* Randomize size, colors, and starting positions */
+    left: calc(50% - 5px); /* Center initially */
+    animation-duration: 1s;
+}
+
+/* Randomize the size */
+.confetti-small {
+    width: 6px;
+    height: 6px;
+    background-color: #FFC300;
+}
+
+.confetti-large {
+    width: 12px;
+    height: 12px;
+    background-color: #DAF7A6;
+}
+
+/* Make tags for task look dull when task done */
+.dull {
+    opacity: 0.4; 
+}
+
+
+#no-lists-message {
+    display: none; 
+    text-align: center; 
+    margin-top: 130px;
+    font-size: 30px;
+    color: #878787;
+}
+
+.main-content.left-align #no-lists-message {
+    text-align: center;
+    margin-left: 44%;
+}
+
+#no-tasks-message {
+    display: none; 
+    text-align: center; 
+    margin-top: 40px;
+    font-size: 27px;
+    font-weight: bold;
+    color: #878787;
+}
+
+.dragging-background {
+    background: linear-gradient(to bottom right, #0279c9, #372991, #8e02ac);
+}
